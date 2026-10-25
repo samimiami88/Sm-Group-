@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SM Group — İstanbul ve Bodrum merkezli gayrimenkul geliştirme, renovasyon ve yeniden satış şirketi." />
+  <meta name="theme-color" content="#101110" />
+  <title>SM Group | Gayrimenkulün Yeni Hikâyesi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #111311;
+      --ink-2: #181b18;
+      --paper: #f5f3ee;
+      --paper-2: #ebe7de;
+      --gold: #b99a65;
+      --gold-soft: #d6c29c;
+      --white: #fffdf8;
+      --muted: #8d9089;
+      --line: rgba(255,255,255,.13);
+      --max: 1240px;
+      --shadow: 0 25px 70px rgba(0,0,0,.18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 23px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      transition: .25s ease;
+      cursor: pointer;
+    }
+    .btn-dark { background: var(--ink); color: var(--white); }
+    .btn-dark:hover { transform: translateY(-2px); background: #242824; }
+    .btn-light { background: transparent; color: var(--white); border-color: rgba(255,255,255,.35); }
+    .btn-light:hover { background: rgba(255,255,255,.1); }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      background: rgba(16,17,16,.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--white);
+    }
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+      letter-spacing: -.05em;
+    }
+    .brand-text strong {
+      display: block;
+      font-size: 13px;
+      letter-spacing: .18em;
+    }
+    .brand-text span {
+      display: block;
+      margin-top: -1px;
+      font-size: 9px;
+      color: var(--gold-soft);
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 29px;
+      align-items: center;
+      color: rgba(255,255,255,.8);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .menu-btn { display:none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(90deg, rgba(9,11,10,.82) 0%, rgba(9,11,10,.40) 50%, rgba(9,11,10,.58) 100%),
+        url("https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=2200&q=86") center/cover;
+      color: var(--white);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 35%;
+      background: linear-gradient(to top, rgba(9,11,10,.75), transparent);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 145px 0 92px;
+      max-width: 860px;
+    }
+    .hero h1 {
+      margin: 18px 0 25px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(52px, 8vw, 102px);
+      line-height: .96;
+      letter-spacing: -.045em;
+      font-weight: 600;
+    }
+    .hero h1 em { color: var(--gold-soft); font-style: normal; }
+    .hero p {
+      max-width: 670px;
+      margin: 0 0 30px;
+      color: rgba(255,255,255,.77);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+    .hero-actions { display:flex; gap: 12px; flex-wrap: wrap; }
+    .hero-meta {
+      position: absolute;
+      z-index: 3;
+      right: 28px;
+      bottom: 44px;
+      writing-mode: vertical-rl;
+      color: rgba(255,255,255,.45);
+      letter-spacing: .17em;
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 120px 0;
+      background: var(--paper);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 90px;
+      align-items: end;
+    }
+    .intro h2, .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1.03;
+      letter-spacing: -.035em;
+      font-weight: 600;
+      margin: 16px 0 24px;
+    }
+    .intro-copy {
+      max-width: 720px;
+      color: #50544e;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+    .intro-side {
+      padding-left: 42px;
+      border-left: 1px solid #c9c5bc;
+    }
+    .intro-side strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 62px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .intro-side span { color: #73776f; font-size: 13px; }
+
+    /* FEATURE */
+    .feature {
+      background: var(--ink);
+      color: var(--white);
+      padding: 110px 0;
+    }
+    .feature-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap: 30px;
+      margin-bottom: 55px;
+    }
+    .feature .section-title { margin-bottom: 0; }
+    .feature-note {
+      max-width: 430px;
+      color: #9da198;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+    }
+    .visual {
+      min-height: 560px;
+      background-size: cover;
+      background-position:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .visual.large {
+      background-image: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.08)),
+        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=84");
+    }
+    .visual.small {
+      min-height: 272px;
+      background-image: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,.10)),
+        url("https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=84");
+      margin-bottom: 18px;
+    }
+    .visual.small:nth-child(2) {
+      background-image: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,.10)),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=84");
+      margin-bottom: 0;
+    }
+    .visual-copy {
+      position:absolute;
+      left: 30px;
+      right: 30px;
+      bottom: 28px;
+    }
+    .visual-copy small {
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .visual-copy h3 {
+      margin: 5px 0 5px;
+      font-family: "Playfair Display", serif;
+      font-size: 31px;
+      font-weight: 600;
+    }
+    .visual-copy p { margin:0; color: #c7cac3; font-size: 12px; }
+
+    /* STORY */
+    .story { padding: 120px 0; background: var(--paper-2); }
+    .story-grid {
+      display:grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 80px;
+      align-items:start;
+    }
+    .story-image {
+      position: sticky;
+      top: 105px;
+      min-height: 650px;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.62), transparent 50%),
+        url("https://images.unsplash.com/photo-1543429258-6cc4d9a8e7f0?auto=format&fit=crop&w=1200&q=84") center/cover;
+    }
+    .story-card {
+      margin: 0 25px 25px;
+      position:absolute;
+      left:0; right:0; bottom:0;
+      padding: 24px;
+      background: rgba(17,19,17,.83);
+      backdrop-filter: blur(9px);
+      color: var(--white);
+    }
+    .story-card strong {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+    }
+    .story-copy .section-title { margin-top: 10px; }
+    .story-copy p { color:#575a54; font-size: 15px; line-height: 1.95; }
+    .timeline { margin-top: 42px; border-top: 1px solid #cbc6bc; }
+    .timeline-item {
+      display:grid;
+      grid-template-columns: 90px 1fr;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid #cbc6bc;
+    }
+    .timeline-item b { color: var(--gold); font-size: 13px; letter-spacing: .05em; }
+    .timeline-item strong { display:block; margin-bottom:4px; }
+    .timeline-item p { margin:0; font-size:13px; line-height:1.7; }
+
+    /* SERVICES */
+    .services { padding: 120px 0; background: var(--white); }
+    .services-head {
+      display:flex; justify-content:space-between; gap:40px; align-items:end;
+      margin-bottom: 52px;
+    }
+    .services-intro { max-width: 430px; color:#686c65; font-size:14px; line-height:1.8; }
+    .services-grid {
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top:1px solid #d2cec4;
+      border-left:1px solid #d2cec4;
+    }
+    .service {
+      min-height: 230px;
+      padding: 27px;
+      border-right:1px solid #d2cec4;
+      border-bottom:1px solid #d2cec4;
+      transition:.25s ease;
+    }
+    .service:hover { background:#f4f2ed; transform:translateY(-3px); }
+    .service-num { color:var(--gold); font-size:10px; font-weight:700; letter-spacing:.14em; }
+    .service h3 { font-family:"Playfair Display", serif; font-size:25px; margin:35px 0 10px; }
+    .service p { margin:0; color:#6b6f68; font-size:12px; line-height:1.75; }
+
+    /* LOCATIONS */
+    .locations { padding: 120px 0; background:#101110; color:var(--white); }
+    .location-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top: 52px;
+    }
+    .location {
+      min-height:560px;
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      overflow:hidden;
+    }
+    .location.istanbul {
+      background-image: linear-gradient(0deg, rgba(0,0,0,.82), rgba(0,0,0,.08)),
+        url("https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1300&q=86");
+    }
+    .location.bodrum {
+      background-image: linear-gradient(0deg, rgba(0,0,0,.82), rgba(0,0,0,.08)),
+        url("https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1300&q=86");
+    }
+    .location-content {
+      position:absolute; left:35px; right:35px; bottom:35px;
+    }
+    .location-content h3 {
+      font-family:"Playfair Display", serif;
+      font-size:46px;
+      margin:7px 0;
+    }
+    .location-content p { margin:0; max-width:460px; color:#c9cbc5; font-size:13px; line-height:1.8; }
+    .location-tag { font-size:10px; color:var(--gold-soft); text-transform:uppercase; letter-spacing:.13em; }
+
+    /* NUMBERS */
+    .numbers { padding: 75px 0; background:var(--gold); color:var(--ink); }
+    .numbers-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:35px; }
+    .number strong { font-family:"Playfair Display", serif; font-size:55px; line-height:1; display:block; }
+    .number span { display:block; margin-top:8px; font-size:11px; text-transform:uppercase; letter-spacing:.11em; font-weight:700; }
+
+    /* CEO */
+    .ceo { padding: 120px 0; background:var(--paper); }
+    .ceo-grid { display:grid; grid-template-columns:.75fr 1.25fr; gap:80px; align-items:center; }
+    .ceo-photo {
+      min-height:620px;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.64), transparent 55%),
+        url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=84") center/cover;
+      position:relative;
+      filter:grayscale(12%);
+    }
+    .ceo-label {
+      position:absolute; left:26px; bottom:25px;
+      padding:17px 20px;
+      background:rgba(17,19,17,.86);
+      color:white;
+      min-width:220px;
+    }
+    .ceo-label strong { display:block; font-family:"Playfair Display", serif; font-size:22px; }
+    .ceo-label span { color:#aaa; font-size:11px; text-transform:uppercase; letter-spacing:.14em; }
+    .ceo-copy blockquote {
+      margin: 28px 0 35px;
+      font-family:"Playfair Display", serif;
+      font-size: 34px;
+      line-height:1.3;
+      letter-spacing:-.02em;
+    }
+    .ceo-copy p { color:#5d615a; font-size:15px; line-height:1.95; }
+    .signature {
+      margin-top: 30px;
+      font-family:"Playfair Display", serif;
+      font-size:27px;
+      color:var(--ink);
+    }
+
+    /* PROCESS */
+    .process { padding: 110px 0; background: #e7e3da; }
+    .process-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:#cfc9be; margin-top:50px; }
+    .process-item { background:#e7e3da; padding:38px 32px; min-height:260px; }
+    .process-item span { color:var(--gold); font-weight:700; font-size:12px; }
+    .process-item h3 { font-family:"Playfair Display",serif; font-size:27px; margin:35px 0 10px; }
+    .process-item p { font-size:13px; color:#686c64; line-height:1.8; margin:0; }
+
+    /* CONTACT */
+    .contact { padding: 115px 0 70px; background:var(--ink); color:var(--white); }
+    .contact-grid { display:grid; grid-template-columns:1fr .8fr; gap:80px; }
+    .contact h2 { font-family:"Playfair Display",serif; font-size:clamp(46px,6vw,80px); line-height:1; letter-spacing:-.04em; margin:17px 0 25px; }
+    .contact p { color:#aeb2aa; max-width:620px; line-height:1.9; }
+    .contact-info { display:grid; gap:22px; align-content:start; }
+    .contact-line { padding-bottom:20px; border-bottom:1px solid var(--line); }
+    .contact-line small { display:block; color:var(--gold-soft); text-transform:uppercase; letter-spacing:.13em; font-size:9px; margin-bottom:5px; }
+    .contact-line strong { font-size:15px; font-weight:500; }
+    .footer {
+      margin-top:75px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      color:#757a72;
+      font-size:10px;
+      line-height:1.7;
+    }
+
+    /* REVEAL */
+    .reveal { opacity:1; transform:none; }
+    .js .reveal { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+    .js .reveal.visible { opacity:1; transform:none; }
+
+    @media (max-width: 1020px) {
+      .nav-links { display:none; }
+      .menu-btn {
+        display:inline-flex; border:1px solid rgba(255,255,255,.22); background:transparent; color:white;
+        width:43px; height:43px; align-items:center; justify-content:center; cursor:pointer;
+      }
+      .nav.mobile-open .nav-links {
+        display:flex; position:absolute; left:0; right:0; top:78px; padding:20px 24px;
+        background:#141614; flex-direction:column; align-items:flex-start;
+      }
+      .intro-grid, .story-grid, .ceo-grid, .contact-grid { grid-template-columns:1fr; gap:50px; }
+      .intro-side { border-left:0; border-top:1px solid #c9c5bc; padding:25px 0 0; }
+      .story-image { position:relative; top:auto; min-height:510px; }
+      .services-grid { grid-template-columns:repeat(2,1fr); }
+      .location-grid { grid-template-columns:1fr; }
+      .numbers-grid { grid-template-columns:repeat(2,1fr); }
+    }
+
+    @media (max-width: 720px) {
+      .container { width:min(var(--max), calc(100% - 30px)); }
+      .nav-inner { height:70px; }
+      .nav.mobile-open .nav-links { top:70px; }
+      .hero-content { padding: 140px 0 72px; }
+      .hero p { font-size:15px; }
+      .hero-meta { display:none; }
+      .intro, .feature, .story, .services, .locations, .ceo { padding:80px 0; }
+      .feature-top, .services-head { display:block; }
+      .feature-note { margin-top:20px; }
+      .feature-grid { grid-template-columns:1fr; }
+      .visual { min-height:460px; }
+      .services-grid { grid-template-columns:1fr; }
+      .service { min-height:205px; }
+      .location { min-height:460px; }
+      .numbers { padding:55px 0; }
+      .numbers-grid { grid-template-columns:1fr 1fr; gap:30px 15px; }
+      .number strong { font-size:43px; }
+      .process-grid { grid-template-columns:1fr; }
+      .process-item { min-height:unset; padding:30px 24px; }
+      .ceo-photo { min-height:500px; }
+      .ceo-copy blockquote { font-size:28px; }
+      .footer { display:block; }
+    }
+  </style>
+</head>
+
+<body>
+  <script>document.documentElement.classList.add('js');</script>
+
+  <header class="nav" id="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="SM Group">
+        <div class="brand-mark">SM</div>
+        <div class="brand-text">
+          <strong>SM GROUP</strong>
+          <span>Real Estate • Development</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Ana menü">
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#projeler">Projeler</a>
+        <a href="#hizmetler">Uzmanlığımız</a>
+        <a href="#hikaye">Hikâyemiz</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Menüyü aç/kapat">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-content reveal">
+        <div class="eyebrow">2010'dan beri İstanbul • Bodrum</div>
+        <h1>Eski yapılar.<br><em>Yeni bir hayat.</em></h1>
+        <p>
+          SM Group, doğru gayrimenkulü doğru vizyonla yeniden yorumlayan bağımsız bir
+          gayrimenkul geliştirme şirketidir. Değerini henüz tam göstermeyen yapıları satın
+          alıyor, yeniliyor ve onları modern yaşamın ihtiyaçlarına göre yeniden tasarlıyoruz.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#projeler">Projelerimizi Keşfedin ↗</a>
+          <a class="btn btn-light" href="#iletisim">Bizimle İletişime Geçin</a>
+        </div>
+      </div>
+      <div class="hero-meta">Istanbul — Bodrum — Türkiye</div>
+    </section>
+
+    <section class="intro" id="hakkimizda">
+      <div class="container intro-grid">
+        <div class="reveal">
+          <div class="eyebrow">SM Group yaklaşımı</div>
+          <h2>Bir yapıyı satın almak kolaydır. Onun değerini yeniden yaratmak farklıdır.</h2>
+          <div class="intro-copy">
+            <p>
+              SM Group'un çalışma modeli, klasik anlamda yalnızca mülk alıp satmaktan daha fazlasıdır.
+              Biz her gayrimenkule bir yatırım değil, doğru kullanıldığında yeni bir hikâyeye dönüşebilecek
+              bir potansiyel olarak bakıyoruz.
+            </p>
+            <p>
+              İstanbul'un köklü semtlerinden Bodrum'un kıyı yaşamına kadar; eski apartmanlar, müstakil evler,
+              rezidanslar ve seçili ticari gayrimenkuller üzerinde çalışıyoruz. Satın alma aşamasında yapının
+              konumunu, mimari karakterini, teknik durumunu ve bölgenin geleceğini birlikte değerlendiriyoruz.
+              Ardından planlama, tasarım, renovasyon ve satış sürecini tek bir çatı altında yönetiyoruz.
+            </p>
+          </div>
+        </div>
+
+        <aside class="intro-side reveal">
+          <span>Kuruluş</span>
+          <strong>2010</strong>
+          <span>İstanbul merkezli başlayan yolculuk, Bodrum ile büyüyen bir yaşam ve yatırım vizyonuna dönüştü.</span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="feature" id="projeler">
+      <div class="container">
+        <div class="feature-top">
+          <div class="reveal">
+            <div class="eyebrow">Seçili çalışmalar</div>
+            <h2 class="section-title">Mimariyi<br>yeniden düşünürüz.</h2>
+          </div>
+          <div class="feature-note reveal">
+            Aşağıdaki projeler, SM Group'un yatırım ve renovasyon yaklaşımını anlatmak için hazırlanmış
+            konsept örneklerdir. Gerçek projelerinizle değiştirilmeye hazır, kurumsal bir vitrin olarak tasarlanmıştır.
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="visual large reveal">
+            <div class="visual-copy">
+              <small>İstanbul • Konsept Proje</small>
+              <h3>City Residence</h3>
+              <p>Eski bir şehir yapısının çağdaş, sakin ve zamansız bir yaşam alanına dönüşümü.</p>
+            </div>
+          </article>
+
+          <div>
+            <article class="visual small reveal">
+              <div class="visual-copy">
+                <small>Bodrum • Konsept Proje</small>
+                <h3>Yalıkavak House</h3>
+                <p>Akdeniz ışığını doğal taş, ahşap ve açık plan yaşamla buluşturan yenileme.</p>
+              </div>
+            </article>
+            <article class="visual small reveal">
+              <div class="visual-copy">
+                <small>İstanbul • Konsept Proje</small>
+                <h3>Urban Loft</h3>
+                <p>Fonksiyonel planlama, modern malzemeler ve yüksek yaşam standardı.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="hikaye">
+      <div class="container story-grid">
+        <div class="story-image reveal">
+          <div class="story-card">
+            <small>SM GROUP</small>
+            <strong>“Bir mülkün geçmişine saygı duyup geleceğini tasarlıyoruz.”</strong>
+          </div>
+        </div>
+
+        <div class="story-copy reveal">
+          <div class="eyebrow">Hikâyemiz</div>
+          <h2 class="section-title">2010'da başlayan bir fikir.</h2>
+
+          <p>
+            SM Group'un hikâyesi, 2010 yılında İstanbul'da gayrimenkule bakışın değişebileceğine inanan
+            Khalil Mahmoud tarafından atılan küçük ama kararlı bir adımla başladı. İlk yıllarda odak,
+            satın alınması kolay görünen mülklerden çok, doğru ellerde büyük bir potansiyel taşıyan
+            yapılardı.
+          </p>
+
+          <p>
+            Eski bir daireyi yalnızca boyayıp satışa hazırlamak yerine, planını yeniden kurgulamak;
+            kullanılamayan alanları yaşam alanına dönüştürmek; ışığı, malzemeyi ve günlük hayatın akışını
+            yeniden düşünmek SM Group'un ilk dönem çalışma kültürünün temelini oluşturdu.
+          </p>
+
+          <p>
+            Zaman içinde bu yaklaşım küçük konut yenilemelerinden daha büyük apartman ve rezidans
+            projelerine taşındı. İstanbul'da edinilen deneyim, Bodrum'un farklı yaşam kültürü ve
+            mimari diliyle birleşti. Bugün SM Group, iki lokasyonda seçici bir portföy mantığıyla
+            gayrimenkul satın alma, geliştirme, renovasyon ve yeniden satış süreçlerini yönetiyor.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <b>2010</b>
+              <div><strong>SM Group kuruldu</strong><p>İstanbul'da konut odaklı ilk gayrimenkul yatırımları başladı.</p></div>
+            </div>
+            <div class="timeline-item">
+              <b>2014</b>
+              <div><strong>Renovasyon modeli büyüdü</strong><p>Satın alma, proje geliştirme ve renovasyon süreçleri tek bir çalışma modeli altında birleştirildi.</p></div>
+            </div>
+            <div class="timeline-item">
+              <b>2018</b>
+              <div><strong>Seçici portföy yaklaşımı</strong><p>Kat mülkiyetli yapılar, apartmanlar ve yüksek potansiyelli şehir mülklerine odaklanıldı.</p></div>
+            </div>
+            <div class="timeline-item">
+              <b>2022</b>
+              <div><strong>Bodrum dönemi</strong><p>Bodrum ve çevresinde yaşam odaklı konut projeleri portföye dahil edildi.</p></div>
+            </div>
+            <div class="timeline-item">
+              <b>Bugün</b>
+              <div><strong>İstanbul + Bodrum</strong><p>Konum, tasarım ve kaliteyi tek bir yatırım vizyonunda buluşturan yeni nesil geliştirme anlayışı.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="hizmetler">
+      <div class="container">
+        <div class="services-head">
+          <div class="reveal">
+            <div class="eyebrow">Uzmanlığımız</div>
+            <h2 class="section-title">Değer yaratmanın<br>dört adımı.</h2>
+          </div>
+          <div class="services-intro reveal">
+            SM Group'ta süreç, gayrimenkulü bulduğumuz anda başlar. Pazarı okur, teknik durumu analiz eder,
+            yeni kullanım senaryosunu tasarlar ve satışa kadar her aşamada aynı kalite standardını koruruz.
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service reveal">
+            <span class="service-num">01 / ACQUISITION</span>
+            <h3>Gayrimenkul Alımı</h3>
+            <p>Doğru lokasyon, doğru yapı ve doğru fiyatı birlikte değerlendirerek yüksek potansiyelli mülkleri seçiyoruz.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service-num">02 / DEVELOPMENT</span>
+            <h3>Proje Geliştirme</h3>
+            <p>Yapının mevcut karakterini anlayıp modern yaşam beklentilerine uygun yeni bir plan ve tasarım dili oluşturuyoruz.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service-num">03 / RENOVATION</span>
+            <h3>Komple Renovasyon</h3>
+            <p>İç mekan, teknik altyapı, cephe, aydınlatma ve malzeme seçimlerini aynı proje disiplininde yönetiyoruz.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service-num">04 / SALES</span>
+            <h3>Yeniden Satış</h3>
+            <p>Ortaya çıkan gayrimenkulu doğru konumlandırma, sunum ve satış stratejisiyle yeni sahibine ulaştırıyoruz.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="locations">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Uzmanlık bölgelerimiz</div>
+          <h2 class="section-title">İki şehir.<br>İki karakter.</h2>
+        </div>
+
+        <div class="location-grid">
+          <article class="location istanbul reveal">
+            <div class="location-content">
+              <div class="location-tag">01 • Metropol yaşamı</div>
+              <h3>İstanbul</h3>
+              <p>
+                Tarihi doku ile modern yaşamın aynı sokakta buluştuğu İstanbul'da, doğru lokasyondaki
+                eski yapıları yeniden kurguluyor; şehrin hızına uyum sağlayan çağdaş konutlar geliştiriyoruz.
+              </p>
+            </div>
+          </article>
+
+          <article class="location bodrum reveal">
+            <div class="location-content">
+              <div class="location-tag">02 • Kıyı yaşamı</div>
+              <h3>Bodrum</h3>
+              <p>
+                Doğal ışık, açık alanlar, taş ve ahşap gibi zamansız malzemelerle Bodrum'un kendine özgü
+                yaşam kültürünü modern konforla bir araya getiren seçili projeler geliştiriyoruz.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="numbers">
+      <div class="container numbers-grid">
+        <div class="number reveal"><strong>15+</strong><span>Yıllık deneyim</span></div>
+        <div class="number reveal"><strong>2</strong><span>Ana uzmanlık bölgesi</span></div>
+        <div class="number reveal"><strong>360°</strong><span>Geliştirme yaklaşımı</span></div>
+        <div class="number reveal"><strong>1</strong><span>Tek kalite standardı</span></div>
+      </div>
+    </section>
+
+    <section class="ceo">
+      <div class="container ceo-grid">
+        <div class="ceo-photo reveal">
+          <div class="ceo-label">
+            <strong>Khalil Mahmoud</strong>
+            <span>Kurucu & CEO</span>
+          </div>
+        </div>
+
+        <div class="ceo-copy reveal">
+          <div class="eyebrow">Kurucumuzdan</div>
+          <h2 class="section-title">“Bizim için başarı, sadece bir mülkü satmak değildir.”</h2>
+
+          <blockquote>
+            “Başarı; satın aldığımız yapının potansiyelini görmek, ona yeni bir hayat vermek ve ortaya
+            çıkan değerin yeni sahibine gerçekten iyi bir yaşam sunmasını sağlamaktır.”
+          </blockquote>
+
+          <p>
+            SM Group'u kurarken hedefim yalnızca daha fazla gayrimenkule sahip olmak değildi. Asıl hedef,
+            gayrimenkul geliştirmeyi daha dikkatli, daha seçici ve daha estetik bir süreç haline getirmekti.
+            Çünkü iyi bir proje, yalnızca metrekare ve m² satış fiyatından oluşmaz. Doğru planlama, iyi
+            malzeme, kaliteli işçilik, güçlü lokasyon ve uzun yıllar değerini koruyacak bir tasarım aynı
+            denklemde buluşmalıdır.
+          </p>
+          <p>
+            İstanbul bize disiplinli şehir yaşamını; Bodrum ise sadeliğin ve doğayla uyumun gücünü öğretiyor.
+            İki farklı dünyanın ortak noktasında, zamansız ve nitelikli gayrimenkuller üretmeye devam ediyoruz.
+          </p>
+          <div class="signature">Khalil Mahmoud</div>
+          <div style="font-size:11px;color:#8a8e86;text-transform:uppercase;letter-spacing:.12em;">Founder & CEO • SM Group</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Çalışma modelimiz</div>
+          <h2 class="section-title">Şeffaf süreç.<br>Net sonuç.</h2>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-item reveal">
+            <span>01</span>
+            <h3>Analiz</h3>
+            <p>Konum, yapı, maliyet, hedef kitle ve bölgesel gelecek potansiyeli birlikte incelenir. Her fırsat yatırım değildir; doğru olanı seçmek ilk adımdır.</p>
+          </article>
+          <article class="process-item reveal">
+            <span>02</span>
+            <h3>Dönüşüm</h3>
+            <p>Projenin yeni kimliği oluşturulur. Mimari kararlar, teknik ihtiyaçlar ve iç mekan tasarımı tek bir bütün olarak ele alınır.</p>
+          </article>
+          <article class="process-item reveal">
+            <span>03</span>
+            <h3>Sunum & Satış</h3>
+            <p>Sonuç yalnızca yenilenmiş bir yapı değil, doğru alıcıyla buluşmaya hazır, hikâyesi ve karakteri olan bir gayrimenkuldür.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="iletisim">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="reveal">
+            <div class="eyebrow">İletişim</div>
+            <h2>Yeni bir proje<br>konuşalım.</h2>
+            <p>
+              Satın almak istediğiniz bir yapı, geliştirmek istediğiniz bir arsa veya değerini yeniden
+              kazanabileceğine inandığınız bir gayrimenkul varsa bizimle iletişime geçin.
+              İstanbul ve Bodrum'daki fırsatları değerlendiriyor, seçili projelerde satın alma ve geliştirme
+              görüşmeleri yapıyoruz.
+            </p>
+            <a class="btn btn-light" href="mailto:info@smgroup.com.tr">E-posta Gönder ↗</a>
+          </div>
+
+          <div class="contact-info reveal">
+            <div class="contact-line">
+              <small>İstanbul Ofisi</small>
+              <strong>İstanbul, Türkiye</strong>
+            </div>
+            <div class="contact-line">
+              <small>Bodrum Ofisi</small>
+              <strong>Bodrum, Muğla, Türkiye</strong>
+            </div>
+            <div class="contact-line">
+              <small>E-posta</small>
+              <strong>info@smgroup.com.tr</strong>
+            </div>
+            <div class="contact-line">
+              <small>Web</small>
+              <strong>www.smgroup.com.tr</strong>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div>© 2010–2026 SM Group. Tüm hakları saklıdır.</div>
+          <div>Kurumsal konsept / demo web sitesi. İletişim, adres ve proje bilgileri yayına alınmadan önce gerçek bilgilerle güncellenmelidir.</div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menuBtn');
+
+    menuBtn.addEventListener('click', () => {
+      navbar.classList.toggle('mobile-open');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navbar.classList.remove('mobile-open'));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
